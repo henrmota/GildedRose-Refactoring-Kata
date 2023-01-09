@@ -8,6 +8,28 @@ export class Item {
     this.sellIn = sellIn;
     this.quality = quality;
   }
+
+  increaseQuantity(step = 1) {
+    const newQuality = this.quality + step;
+    if (newQuality > 50) {
+      return;
+    }
+
+    this.quality = newQuality;
+  }
+
+  decreaseQuantity(step = 1) {
+    const newQuality = this.quality - step;
+    if (newQuality < 0) {
+      return;
+    }
+
+    this.quality = newQuality;
+  }
+
+  decreaseSellIn(step = 1) {
+    this.sellIn -= step;
+  }
 }
 
 export class GildedRose {
@@ -17,6 +39,7 @@ export class GildedRose {
     this.items = items;
   }
 
+  
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
